@@ -1,15 +1,13 @@
 package com.example.eventbususingtest.rest;
 
-
 import retrofit.Callback;
 import retrofit.http.GET;
-import retrofit.http.Header;
+import retrofit.http.Query;
 
-import com.example.eventbususingtest.model.RequestModel;
+import com.example.eventbususingtest.model.Data;
 
 public interface GetJSONInterface {
-	@GET("/test/?id=1")
-	void getJSON(@Header("title") String title,
-			Callback<RequestModel> callback);
+	@GET("/test/")
+	void getJSON(@Query("id") int id, Callback<Data> callback);
 
 }

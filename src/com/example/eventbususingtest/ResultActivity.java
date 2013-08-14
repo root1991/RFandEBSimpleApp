@@ -5,24 +5,20 @@ import android.util.Log;
 
 import com.example.eventbususingtest.callbacks.JSONRequest;
 import com.example.eventbususingtest.events.RequestEvent;
-import com.example.eventbususingtest.rest.RestAdapterCreator;
+import com.example.eventbususingtest.rest.GetJSONInterface;
 
-public class ResultActivity extends MainActivity{
-	RestAdapterCreator creatror = new RestAdapterCreator();
+public class ResultActivity extends MainActivity {
+	GetJSONInterface jface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		creatror.getmJSONInterFace().getJSON("title", new JSONRequest());
+		jface = getCreator().getmJSONInterFace();
+		jface.getJSON(1, new JSONRequest());
 	}
-	
-	
 
 	public void onEventMainThread(RequestEvent event) {
-		Log.d("REQUEST", event.getModel().title);
+		Log.e("REQ", event.getModel().title);
 	}
-	
-	
-	
 }

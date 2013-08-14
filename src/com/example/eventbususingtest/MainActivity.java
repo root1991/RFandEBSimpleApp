@@ -1,19 +1,27 @@
 package com.example.eventbususingtest;
 
-import com.example.eventbususingtest.events.RetrofitErrorEvent;
-
-import de.greenrobot.event.EventBus;
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 
+import com.example.eventbususingtest.events.RetrofitErrorEvent;
+import com.example.eventbususingtest.rest.RestAdapterCreator;
+
+import de.greenrobot.event.EventBus;
+
 public abstract class MainActivity extends Activity {
+	private RestAdapterCreator creator;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		creator = ((TestAplication) getApplication()).getCreator();
+	}
+
+	public RestAdapterCreator getCreator() {
+		return creator;
 	}
 
 	@Override
